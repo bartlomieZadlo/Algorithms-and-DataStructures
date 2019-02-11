@@ -58,6 +58,7 @@ namespace AlgoDs.DataStructures
 
             int[] tempArray = new int[Container.Length + 1];
             int index = 0;
+
             while (index != position)
             {
                 tempArray[index] = Container[index];

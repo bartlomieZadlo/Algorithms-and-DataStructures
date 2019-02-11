@@ -57,6 +57,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DataStructures\DynamicArrayTests.cs" />
+    <Compile Include="DataStructures\LinkedListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

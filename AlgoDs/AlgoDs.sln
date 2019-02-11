@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoDs", "AlgoDs\AlgoDs.csproj", "{B4269799-BCF0-4F2D-AD13-2CE814D5E92F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoDsTests", "AlgoDsTests\AlgoDsTests.csproj", "{CD26220A-9B85-45DA-8CBD-F8B8AD80CA50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B4269799-BCF0-4F2D-AD13-2CE814D5E92F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4269799-BCF0-4F2D-AD13-2CE814D5E92F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4269799-BCF0-4F2D-AD13-2CE814D5E92F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD26220A-9B85-45DA-8CBD-F8B8AD80CA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD26220A-9B85-45DA-8CBD-F8B8AD80CA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD26220A-9B85-45DA-8CBD-F8B8AD80CA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD26220A-9B85-45DA-8CBD-F8B8AD80CA50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

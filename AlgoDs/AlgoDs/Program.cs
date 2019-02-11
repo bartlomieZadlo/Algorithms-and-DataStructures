@@ -10,6 +10,7 @@ namespace AlgoDs
     {
         static void Main(string[] args)
         {
+
         }
     }
 }

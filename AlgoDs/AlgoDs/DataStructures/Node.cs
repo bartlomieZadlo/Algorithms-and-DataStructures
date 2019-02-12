@@ -27,6 +27,6 @@ namespace AlgoDs.DataStructures
 
         public object Element { get => element; set => element = value; }
         public Node Next { get => next; set => next = value; }
-        internal Node Previous { get => previous; set => previous = value; }
+        public Node Previous { get => previous; set => previous = value; }
     }
 }

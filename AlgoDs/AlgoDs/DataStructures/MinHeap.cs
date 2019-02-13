@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AlgoDs.DataStructures
 {
-    class MinHeap
+    public class MinHeap
     {
         private int heapSize;
         private int heapCapacity;
@@ -32,7 +32,7 @@ namespace AlgoDs.DataStructures
             return (index * 2 + 2);
         }
 
-        public int GetRoot()
+        public int PeekRoot()
         {
             return Container[0];
         }
@@ -69,10 +69,10 @@ namespace AlgoDs.DataStructures
             if (HeapSize == 1)
             {
                 HeapSize--;
-                return GetRoot();
+                return PeekRoot();
             }
 
-            int root = GetRoot();
+            int root = PeekRoot();
             Container[0] = Container[HeapSize - 1];
             HeapSize--;
 
@@ -81,9 +81,9 @@ namespace AlgoDs.DataStructures
             return root;
         }
 
-        public void DeleteKey(int i)
+        public void DeleteKey(int index)
         {
-            DecreaseKey(i, Int32.MinValue);
+            DecreaseKey(index, Int32.MinValue);
             ExtractMin();
         }
 
@@ -120,7 +120,7 @@ namespace AlgoDs.DataStructures
         }
 
         [Serializable]
-        private class HeapEmptyException : Exception
+        public class HeapEmptyException : Exception
         {
             public HeapEmptyException()
             {

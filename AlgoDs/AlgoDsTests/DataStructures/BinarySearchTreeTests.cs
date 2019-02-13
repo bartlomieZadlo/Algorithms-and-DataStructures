@@ -24,7 +24,8 @@ namespace AlgoDs.DataStructures.Tests
         [TestMethod()]
         public void BinarySearchTreeTest()
         {
-            Console.WriteLine(testTree.Head.Previous.Previous.Element);
+            Console.WriteLine(testTree.Head.Element);
+            Console.WriteLine(testTree.Head.Previous.Element);
             Console.WriteLine(testTree.Head.Previous.Next.Element);
             Assert.IsTrue(BinarySearchTree.IsBSTUtil(testTree.Head, 6, 102));
         }

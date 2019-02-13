@@ -17,23 +17,35 @@ namespace AlgoDs.DataStructures
             Data = data;
             int rootIndex = GetRoot(Data);
             Head = new Node(Data[rootIndex]);
-            CreateTree(Head, Data);
+            foreach(int value in Data)
+            {
+                Insert(Head, value);
+            }
         }
 
-        private void CreateTree(Node root, int[] data)
+        public void Insert(Node root, int data)
         {
-            int rootIndex = GetRoot(data);
-
-            if (rootIndex > 0)
+            if ((int)root.Element < data)
             {
-                root.Next = new Node(data[rootIndex - 1]);
-                root.Previous = new Node(data[rootIndex + 1]);
-                CreateTree(root.Next, data.Slice(0, rootIndex - 1));
-                CreateTree(root.Previous, data.Slice(rootIndex + 2, data.Length-1));
-            }else if (rootIndex == 0)
+                if (root.Next == null)
+                {
+                    root.Next = new Node(data);
+                }
+                else
+                {
+                    Insert(root.Next, data);
+                }
+            }
+            else if ((int)root.Element > data)
             {
-                root.Next = new Node(data[rootIndex]);
-                root.Previous = new Node(data[rootIndex + 1]);
+                if (root.Previous == null)
+                {
+                    root.Previous = new Node(data);
+                }
+                else
+                {
+                    Insert(root.Previous, data);
+                }
             }
         }
 
@@ -59,14 +71,16 @@ namespace AlgoDs.DataStructures
 
         public bool NumberInTree(Node node ,int number)
         {
-            if(number > (int)node.Element)
+            if (node == null)
             {
-                
+                return false;
+            }
+            if(number < (int)node.Element)
+            {
                 return NumberInTree(node.Previous, number);
             }
-            else if(number < (int)node.Element)
-            {
-              
+            else if(number > (int)node.Element)
+            { 
                 return NumberInTree(node.Next, number);
             }
 
@@ -90,7 +104,7 @@ namespace AlgoDs.DataStructures
             /* otherwise check the subtrees recursively  
             tightening the min/max constraints */
             // Allow only distinct values  
-            return (IsBSTUtil(node.Next, min, (int)node.Element - 1) && IsBSTUtil(node.Previous, (int)node.Element + 1, max));
+            return (IsBSTUtil(node.Previous, min, (int)node.Element - 1) && IsBSTUtil(node.Next, (int)node.Element + 1, max));
         }
     }
 

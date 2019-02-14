@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="DataStructures\BinarySearchTreeTests.cs" />
     <Compile Include="DataStructures\DynamicArrayTests.cs" />
+    <Compile Include="DataStructures\HashMapTests.cs" />
     <Compile Include="DataStructures\LinkedListTests.cs" />
     <Compile Include="DataStructures\MinHeapTests.cs" />
     <Compile Include="DataStructures\QueueTests.cs" />

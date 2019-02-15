@@ -5,112 +5,104 @@ using System.Text;
 
 namespace AlgoDs.DataStructures
 {
-        public class Employee
+    public class Friend
+    {
+        public string Name { get; set; }
+        private List<Friend> friends;
+        private Guid iD;
+    
+        public Friend(string name)
         {
-            public string Name { get; set; }
-            public Employee(string name)
-            {
-                Name = name;
-            }
-
-            
-            public List<Employee> Employees
-            {
-                get
-                {
-                    return EmployeesList;
-                }
-            }
-
-            public void IsEmployeeOf(Employee p)
-            {
-                EmployeesList.Add(p);
-            }
-
-            List<Employee> EmployeesList = new List<Employee>();
-
-            public override string ToString()
-            {
-                return name;
-            }
+            Name = name;
+            Friends = new List<Friend>();
+            ID = Guid.NewGuid();    
         }
-
-        public class BreadthFirstSearch
+    
+       
+    
+        public List<Friend> Friends { get => friends; set => friends = value; }
+        public Guid ID { get => iD; set => iD = value; }
+    
+        public void IsFriendOf(Friend p)
         {
-            public Employee BuildEmployeeGraph()
-            {
-                Employee Eva = new Employee("Eva");
-                Employee Sophia = new Employee("Sophia");
-                Employee Brian = new Employee("Brian");
-                Eva.isEmployeeOf(Sophia);
-                Eva.isEmployeeOf(Brian);
-
-                Employee Lisa = new Employee("Lisa");
-                Employee Tina = new Employee("Tina");
-                Employee John = new Employee("John");
-                Employee Mike = new Employee("Mike");
-                Sophia.isEmployeeOf(Lisa);
-                Sophia.isEmployeeOf(John);
-                Brian.isEmployeeOf(Tina);
-                Brian.isEmployeeOf(Mike);
-
-                return Eva;
-            }
-
-            public Employee Search(Employee root, string nameToSearchFor)
-            {
-                Queue<Employee> Q = new Queue<Employee>();
-                HashSet<Employee> S = new HashSet<Employee>();
-                Q.Enqueue(root);
-                S.Add(root);
-
-                while (Q.Count > 0)
-                {
-                    Employee e = Q.Dequeue();
-                    if (e.name == nameToSearchFor)
-                        return e;
-                    foreach (Employee friend in e.Employees)
-                    {
-                        if (!S.Contains(friend))
-                        {
-                            Q.Enqueue(friend);
-                            S.Add(friend);
-                        }
-                    }
-                }
-                return null;
-            }
-
-            public void Traverse(Employee root)
-            {
-                Queue<Employee> traverseOrder = new Queue<Employee>();
-
-                Queue<Employee> Q = new Queue<Employee>();
-                HashSet<Employee> S = new HashSet<Employee>();
-                Q.Enqueue(root);
-                S.Add(root);
-
-                while (Q.Count > 0)
-                {
-                    Employee e = Q.Dequeue();
-                    traverseOrder.Enqueue(e);
-
-                    foreach (Employee emp in e.Employees)
-                    {
-                        if (!S.Contains(emp))
-                        {
-                            Q.Enqueue(emp);
-                            S.Add(emp);
-                        }
-                    }
-                }
-
-                while (traverseOrder.Count > 0)
-                {
-                    Employee e = traverseOrder.Dequeue();
-                    Console.WriteLine(e);
-                }
-            }
+            FriendsList.Add(p);
         }
-        
+    
+        List<Friend> FriendsList = new List<Friend>();
+    
+        public override string ToString()
+        {
+            return Name;
+        }
     }
+    
+    public class BreadthFirstSearch
+    {
+        private Friend root;
+
+        public Friend Root { get => root; set => root = value; }
+
+        public BreadthFirstSearch(Friend root)
+        {
+            Root = root;
+        }
+    
+        public Friend Search(string nameToSearchFor)
+        {
+            Queue friendQue = new Queue();
+            HashSet<Friend> friendsSet = new HashSet<Friend>();
+            friendQue.Enqueue(Root);
+            friendsSet.Add(Root);
+    
+            while (friendQue.Size > 0)
+            {
+                Friend e = (Friend)friendQue.Dequeue();
+                if (e.Name == nameToSearchFor)
+                    return e;
+                foreach (Friend friend in e.Friends)
+                {
+                    if (!friendsSet.Contains(friend))
+                    {
+                        friendQue.Enqueue(friend);
+                        friendsSet.Add(friend);
+                    }
+                }
+            }
+            return null;
+        }
+    
+        public List<Friend> Traverse()
+        {
+            Queue traverseOrder = new Queue();
+            List<Friend> allFriends = new List<Friend>();
+            Queue friendQueue = new Queue();
+            HashSet<Friend> friendsSet = new HashSet<Friend>();
+
+            friendQueue.Enqueue(Root);
+            friendsSet.Add(Root);
+    
+            while (friendQueue.Size > 0)
+            {
+                Friend friend = (Friend)friendQueue.Dequeue();
+                traverseOrder.Enqueue(friend);
+    
+                foreach (Friend person in friend.Friends)
+                {
+                    if (!friendsSet.Contains(person))
+                    {
+                        friendQueue.Enqueue(person);
+                        friendsSet.Add(person);
+                    }
+                }
+            }
+    
+            while (traverseOrder.Size > 0)
+            {
+                Friend friend = (Friend) traverseOrder.Dequeue();
+                allFriends.Add(friend);
+            }
+
+            return allFriends;
+        }
+    }        
+}

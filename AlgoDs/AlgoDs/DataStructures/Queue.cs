@@ -24,6 +24,11 @@ namespace AlgoDs.DataStructures
 
         public void Enqueue(object elem)
         {
+            if(Head == null)
+            {
+                Head = new Node();
+            }
+
             if (Head.Element == null)
             {
                 Head.Element = elem;

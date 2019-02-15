@@ -50,11 +50,15 @@ namespace AlgoDs.DataStructures
 
         public void Add(object key, object value)
         {
-
-
-            HashKey(key);
-            
-            Container[HashIndex][HashedKey] = value;
+            try
+            {
+                HashKey(key);
+                Container[HashIndex][HashedKey] = value;
+            }
+            catch(ArgumentOutOfRangeException e)
+            {
+                return;
+            }
         }
 
         public object GetValue(object key)

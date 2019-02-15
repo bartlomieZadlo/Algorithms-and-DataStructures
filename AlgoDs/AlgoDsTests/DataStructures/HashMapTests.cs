@@ -35,6 +35,17 @@ namespace AlgoDs.DataStructures.Tests
         }
 
         [TestMethod()]
+        public void OverFillTest()
+        {
+
+            for (int i = 0; i < 2 * hashMap.Container.Capacity; i++)
+            {
+                hashMap.Add(String.Format("test{0}", i), String.Format("test{0}", i));
+            }
+            
+        }
+
+        [TestMethod()]
         public void GetNonexistentElementTest()
         {
             hashMap.Add("test1", "test3");
@@ -68,6 +79,8 @@ namespace AlgoDs.DataStructures.Tests
             hashMap.Add("test3", "test5");
 
             hashMap.ClearAll();
+
+
 
             for (int i = 0; i < expectedKeys.Length; i++)
             {
